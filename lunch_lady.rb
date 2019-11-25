@@ -1,18 +1,5 @@
-# Basic Objectives:
-# - the user chooses from a list of main dishes
-# - the user chooses 2 side dish items
-# - computer repeats users tray
-# - computer totals lunch items and displays total
+# Please go to https://github.com/gabbysohappy/lunch_lady_assignment to see the repository
 
-# Bonus Objectives:
-# - the user can choose as many "add-on" items as they want before getting total
-# - the user can clear their choices and start over
-# - the user has a wallet total they start with and their choices cannot exceed what they can pay for
-# - the program is in a loop to keep asking the user to make new trays until they type 'quit' at any time
-# - main dishes and side items have descriptions with them and the user has an option to view the description /nutritional facts before they tray (hint: think hashes)
-# - descriptions of food can have multiple options like nutritional facts, calories, fat content ect...(hint: think nested hashes)
-# - display to the user not only their total but the total fat content/calories / carbs / etc...
-# - Add tests
 require 'colorize'
 
 @customers_trays = []
@@ -39,12 +26,12 @@ class Customer
 
     def tray_items
         food = @tray.map { |h| h[:name] }.join(', ')
-        puts "You have #{food} on your tray."
+        puts "You have #{food} on your tray.".colorize(:light_blue)
     end
 
     def tray_total
         total = @tray.map { |h| h[:price] }.reduce(0, :+) 
-        puts "Your total is $#{total}".colorize(:light_blue)
+        puts "\nYour total is $#{total}".colorize(:light_green)
     end 
 end 
 
@@ -56,8 +43,8 @@ def menu
     main_dish
     first_side
     second_side
-    @complete_tray.tray_total
     @complete_tray.tray_items
+    @complete_tray.tray_total
 end 
 
 def main_dish
